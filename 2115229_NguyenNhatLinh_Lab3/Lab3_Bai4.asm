@@ -1,0 +1,32 @@
+.MODEL SMALL
+.STACK 100H
+.DATA 
+TB1 DB 13,10, "NAM KY TU KE TIEP$" 
+TB2 DB 13,10, "$"
+.CODE
+
+MAIN PROC
+    MOV AX, @DATA
+    MOV DS,AX
+    MOV AH,1 
+    INT 21H
+    MOV BL,AL
+    MOV AH,9
+    LEA DX, TB1
+    INT 21H
+    LEA DX, TB2
+    INT 21H
+    
+    MOV CX,5
+    MOV AH,2
+    MOV DL, BL
+    INC DL
+    
+    LAP:
+    INT 21H
+    INC DL
+    LOOP LAP 
+     
+        
+MAIN ENDP
+END MAIN

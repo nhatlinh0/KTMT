@@ -1,0 +1,16 @@
+.MODEL SMALL
+.STACK 100H
+.DATA
+.CODE
+
+MAIN PROC
+     MOV CX, 26
+     MOV AH,2
+     MOV DL, 41H
+     LAP:
+        INT 21H
+        INC DL
+        LOOP LAP 
+    
+MAIN ENDP
+END MAIN
